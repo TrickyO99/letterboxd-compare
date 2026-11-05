@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
-import { Prata, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Figtree } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
-const prata = Prata({
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-prata",
+  weight: ["700", "800"],
+  variable: "--font-display",
 });
-const inter = Inter({
+const sans = Figtree({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
+  variable: "--font-sans-brand",
 });
 
-// Same monogram as odtriki.com, so the tab icon reads as the same site family.
+// Trikorporation master tile (lime T on forest) for the tab icon.
 const FAVICON =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232547e6'/%3E%3Ctext x='10' y='23' font-family='Georgia,serif' font-size='11' fill='%23fbf6ec' text-anchor='middle'%3EO%3C/text%3E%3Ctext x='22' y='13' font-family='Georgia,serif' font-size='11' fill='%23ff6a1f' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E";
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='22' fill='%230B3D2E'/%3E%3Cpath d='M30 30H98L92 54H74L66 98H42L50 54H24Z' fill='%23C6F432'/%3E%3C/svg%3E";
 
 export const metadata: Metadata = {
   title: "Letterboxd Compare",
@@ -26,11 +27,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`h-full antialiased ${prata.variable} ${inter.variable}`}>
+    <html lang="en" className={`h-full antialiased ${display.variable} ${sans.variable}`}>
       <body className="min-h-full flex flex-col">
-        <div className="brandbar" />
-        <div className="wash" aria-hidden="true" />
         {children}
+        <Script src="https://odtriki.com/shell/tk.js?v=3" data-name="Letterboxd Compare" strategy="afterInteractive" />
       </body>
     </html>
   );

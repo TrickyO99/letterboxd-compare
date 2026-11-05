@@ -1,64 +1,66 @@
 @import "tailwindcss";
 
-/* Same palette as odtriki.com — fixed dark, no light variant, to match. */
+/* Trikorporation brand (dark tokens) — fixed dark, no light variant, to match. */
 :root {
   color-scheme: dark;
 
-  --blue: #2547e6;
-  --blue-deep: #14257d;
-  --blue-bright: #5c7bff;
-  --orange: #ff6a1f;
-  --cream: #fbf6ec;
-  --muted: #d2d9ff;
-  --ink: #10142c;
-  --card: rgba(255, 255, 255, 0.07);
-  --card-hover: rgba(255, 255, 255, 0.12);
-  --border: rgba(255, 255, 255, 0.18);
-  --glass-blur: blur(22px) saturate(160%);
-  --glass-shadow: inset 0 1px 0 rgba(255,255,255,0.25), inset 0 0 0 1px rgba(255,255,255,0.04), 0 12px 34px -14px rgba(8,14,60,0.55);
+  --blue: #0A1511;
+  --blue-deep: #12251D;
+  --blue-bright: #2FC26A;
+  --orange: #2FC26A;
+  --cream: #F7F5EC;
+  --muted: #A9B8AF;
+  --ink: #08241B;
+  --card: rgba(247, 245, 236, 0.04);
+  --card-hover: rgba(247, 245, 236, 0.08);
+  --border: #2A4034;
+  --glass-blur: none;
+  --glass-shadow: none;
 
   --background: var(--blue);
   --foreground: var(--cream);
 
-  --surface-1: rgba(255, 255, 255, 0.08);
+  --surface-1: rgba(247, 245, 236, 0.05);
   --text-primary: var(--cream);
   --text-secondary: var(--muted);
-  --text-muted: rgba(210, 217, 255, 0.62);
-  --gridline: rgba(255, 255, 255, 0.14);
-  --baseline: rgba(255, 255, 255, 0.4);
+  --text-muted: rgba(169, 184, 175, 0.8);
+  --gridline: #2A4034;
+  --baseline: rgba(247, 245, 236, 0.35);
   /* Chart dots need to read against an all-blue page — --blue-bright is too
      close to the background itself to work here, so "cool" gets an actual
      cyan instead of another blue. */
-  --diverging-cool: #22d3ee;
-  --diverging-warm: var(--orange);
-  --diverging-neutral: rgba(251, 246, 236, 0.7);
+  --diverging-cool: #4FB3D1;
+  --diverging-warm: #FFB629;
+  --diverging-neutral: rgba(247, 245, 236, 0.7);
 
   --accent-primary: var(--orange);
-  --accent-primary-hover: #e55a12;
+  --accent-primary-hover: #26A85A;
   --accent-secondary: var(--orange);
   --accent-secondary-hover: var(--orange);
 
   /* Distinct from --orange (the brand accent, used everywhere as a positive/CTA
      color) so an error doesn't read as "look here, good news". */
-  --danger: #ff6b6b;
+  --danger: #FF8A80;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter), ui-sans-serif, -apple-system, "Segoe UI", sans-serif;
-  --font-serif: var(--font-prata), Georgia, serif;
+  --font-sans: var(--font-sans-brand), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: var(--font-display), "Arial Black", system-ui, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), ui-sans-serif, -apple-system, "Segoe UI", sans-serif;
+  font-family: var(--font-sans-brand), system-ui, -apple-system, "Segoe UI", sans-serif;
   line-height: 1.55;
 }
 
 h1, h2, .serif {
-  font-family: var(--font-prata), Georgia, serif;
+  font-family: var(--font-display), "Arial Black", system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .brandbar {
@@ -76,3 +78,6 @@ h1, h2, .serif {
     radial-gradient(46rem 40rem at -8% 22%, rgba(92, 123, 255, 0.45), transparent 58%),
     radial-gradient(60rem 55rem at 50% 120%, var(--blue-deep), transparent 62%);
 }
+
+/* The brand has no gradients or glass: the old wash and top bar are retired (the Trikorporation shell supplies the bar). */
+.wash, .brandbar { display: none; }
